@@ -6,3 +6,9 @@ coverage/
 *.log
 .env*
 !.env.example
+
+# Internal tooling
+.freebuff/
+scripts/
+railoptima-dev.log
+prod-check.log
