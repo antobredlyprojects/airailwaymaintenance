@@ -10,6 +10,7 @@ import { Possessions } from "./views/Possessions";
 import { Conflicts } from "./views/Conflicts";
 import { UsersAdmin } from "./views/UsersAdmin";
 import { AuditLog } from "./views/AuditLog";
+import { ScheduleGantt } from "./views/ScheduleGantt";
 import { CheckCircle2, XCircle } from "lucide-react";
 
 export default function App() {
@@ -71,6 +72,7 @@ export default function App() {
     requests: <WorkRequests user={user} showToast={showToast} />,
     approvals: <Approvals user={user} showToast={showToast} />,
     possessions: <Possessions user={user} showToast={showToast} />,
+    gantt: <ScheduleGantt user={user} />,
     conflicts: <Conflicts user={user} showToast={showToast} />,
     users: <UsersAdmin showToast={showToast} />,
     audit: <AuditLog />,

@@ -7,6 +7,7 @@ import {
   FileSearch,
   TrainFront,
   ListChecks,
+  GanttChart,
 } from "lucide-react";
 
 export interface RoleMeta {
@@ -136,6 +137,12 @@ export const NAV_ITEMS: NavItem[] = [
     label: "Possession Approvals",
     icon: TrainFront,
     visible: (p) => p.approve_possessions,
+  },
+  {
+    id: "gantt",
+    label: "Schedule Gantt",
+    icon: GanttChart,
+    visible: (p) => p.view_schedules,
   },
   {
     id: "conflicts",
