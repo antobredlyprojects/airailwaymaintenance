@@ -258,7 +258,7 @@ async function startServer() {
     }
     const token = crypto.randomUUID();
     sessions.set(token, user);
-    audit(user, "LOGIN", user.id, "Signed in to RailOptima portal");
+    audit(user, "LOGIN", user.id, "Signed in to RailSync AI portal");
     res.json({ token, user: toPublic(user) });
   });
 
@@ -281,7 +281,7 @@ async function startServer() {
 
   app.post("/api/users", requireAuth, requirePermission("manage_users"), (req: any, res) => {
     const actor = req.user as SystemUser;
-    const { username, password, name, role, department, designation, budget_limit, scope_tags } =
+    const { username, password, name, role, department, designation, current_location, budget_limit, scope_tags } =
       req.body || {};
     if (!username || !password || !name || !role) {
       return res.status(400).json({ error: "username, password, name and role are required." });
@@ -301,6 +301,7 @@ async function startServer() {
       role: role as SystemUser["role"],
       department: department || "",
       designation: designation || "",
+      current_location: current_location || "",
       active: true,
       demo: false,
       scope: { tags: Array.isArray(scope_tags) ? scope_tags.map(String) : [] },
@@ -988,7 +989,7 @@ async function startServer() {
   }
 
   app.listen(PORT, "0.0.0.0", () => {
-    console.log(`RailOptima AI Server running on http://localhost:${PORT}`);
+    console.log(`RailSync AI Server running on http://localhost:${PORT}`);
   });
 }
 

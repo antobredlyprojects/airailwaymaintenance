@@ -1,5 +1,5 @@
-// Minimal authenticated API client for the RailOptima portal.
-const TOKEN_KEY = "railoptima_token";
+// Minimal authenticated API client for the RailSync AI portal.
+const TOKEN_KEY = "railsync_token";
 
 export const getToken = () => sessionStorage.getItem(TOKEN_KEY);
 export const setToken = (t: string) => sessionStorage.setItem(TOKEN_KEY, t);

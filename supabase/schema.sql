@@ -1,5 +1,5 @@
 -- ============================================================
--- RailOptima — AI Railway Maintenance Scheduling Platform
+-- RailSync AI — AI Railway Maintenance Scheduling Platform
 -- Supabase schema (runnable in the Supabase SQL editor)
 --
 -- Part 1 (required — the app reads/writes these today):
@@ -91,6 +91,7 @@ CREATE TABLE IF NOT EXISTS public.users (
   role         TEXT NOT NULL,            -- GANG_MATE | SECTION_ENGINEER | DEPOT_ENGINEER | WORKSHOP_SUPERVISOR | ADE | SR_DME | SECTION_CONTROLLER | DRM | SYSTEM_ADMIN | DATA_ANALYST | CONTRACTOR | AUDITOR
   department   TEXT,
   designation  TEXT,
+  current_location TEXT DEFAULT '',
   active       BOOLEAN NOT NULL DEFAULT TRUE,
   scope        JSONB NOT NULL DEFAULT '{"tags": []}'::jsonb,
   budget_limit NUMERIC,                  -- INR approval ceiling; NULL = unlimited / not an approver

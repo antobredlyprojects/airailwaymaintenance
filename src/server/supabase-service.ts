@@ -309,6 +309,7 @@ export async function upsertUserToSupabase(user: any): Promise<boolean> {
       role: user.role,
       department: user.department || "",
       designation: user.designation || "",
+      current_location: user.current_location || "",
       active: user.active ?? true,
       scope: user.scope || { tags: [] },
       budget_limit: user.budget_limit ?? null,

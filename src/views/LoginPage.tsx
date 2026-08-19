@@ -34,7 +34,7 @@ export const LoginPage: React.FC<{ onLogin: (user: PublicUser) => void }> = ({ o
         username: user ?? username,
         password: pass ?? password,
       });
-      sessionStorage.setItem("railoptima_token", res.token);
+      sessionStorage.setItem("railsync_token", res.token);
       onLogin(res.user);
     } catch (e: any) {
       setError(e.message || "Sign-in failed.");
@@ -59,7 +59,7 @@ export const LoginPage: React.FC<{ onLogin: (user: PublicUser) => void }> = ({ o
               </div>
             </div>
             <div>
-              <h1 className="text-lg font-extrabold tracking-tight">RailOptima</h1>
+              <h1 className="text-lg font-extrabold tracking-tight">RailSync AI</h1>
               <p className="text-[11px] text-slate-400">AI Railway Maintenance Scheduling Engine</p>
             </div>
           </div>
@@ -106,7 +106,7 @@ export const LoginPage: React.FC<{ onLogin: (user: PublicUser) => void }> = ({ o
                 <Train className="w-5 h-5 text-cyan-400" />
               </div>
             </div>
-            <span className="font-extrabold text-lg">RailOptima</span>
+            <span className="font-extrabold text-lg">RailSync AI</span>
           </div>
 
           <div className="bg-slate-900/70 border border-slate-800 rounded-2xl p-6 space-y-4 shadow-xl shadow-black/30">

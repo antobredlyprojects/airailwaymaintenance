@@ -21,6 +21,7 @@ const emptyForm = {
   role: "SECTION_ENGINEER" as OfficialRole,
   department: "",
   designation: "",
+  current_location: "",
   budget_limit: "",
   scope_tags: "",
 };
@@ -64,6 +65,7 @@ export const UsersAdmin: React.FC<{ showToast: (m: string, t?: "success" | "erro
         role: form.role,
         department: form.department.trim(),
         designation: form.designation.trim(),
+        current_location: form.current_location.trim(),
         budget_limit: form.budget_limit === "" ? null : Number(form.budget_limit),
         scope_tags: form.scope_tags
           .split(",")
@@ -128,6 +130,9 @@ export const UsersAdmin: React.FC<{ showToast: (m: string, t?: "success" | "erro
               <Field label="Designation">
                 <input value={form.designation} onChange={(e) => setForm({ ...form, designation: e.target.value })} placeholder="e.g. Section Engineer (P.Way)" className={inputCls} />
               </Field>
+              <Field label="Current Location">
+                <input value={form.current_location} onChange={(e) => setForm({ ...form, current_location: e.target.value })} placeholder="e.g. NDLS–TKJ Section, UP-125 km" className={inputCls} />
+              </Field>
               <Field label="Approval ceiling (₹)">
                 <input type="number" value={form.budget_limit} onChange={(e) => setForm({ ...form, budget_limit: e.target.value })} placeholder="e.g. 50000 (blank = none)" className={inputCls} />
               </Field>
@@ -163,9 +168,9 @@ export const UsersAdmin: React.FC<{ showToast: (m: string, t?: "success" | "erro
             <thead>
               <tr className="text-slate-500 border-b border-slate-800">
                 <th className="py-2 pr-3 font-semibold">Official</th>
-                <th className="py-2 pr-3 font-semibold">Role</th>
-                <th className="py-2 pr-3 font-semibold">Department</th>
-                <th className="py-2 pr-3 font-semibold">Scope</th>
+                <th className="py-2 pr-3 font-semibold">Role</th>                  <th className="py-2 pr-3 font-semibold">Department</th>
+                  <th className="py-2 pr-3 font-semibold">Location</th>
+                  <th className="py-2 pr-3 font-semibold">Scope</th>
                 <th className="py-2 pr-3 font-semibold">Ceiling</th>
                 <th className="py-2 font-semibold text-right">Status</th>
               </tr>
@@ -188,6 +193,9 @@ export const UsersAdmin: React.FC<{ showToast: (m: string, t?: "success" | "erro
                     <Badge tone={roleMetaOf(u.role).badge}>{roleMetaOf(u.role).label}</Badge>
                   </td>
                   <td className="py-2.5 pr-3 text-slate-400">{u.department}</td>
+                  <td className="py-2.5 pr-3 text-slate-400 text-[10px]">
+                    {u.current_location || <span className="text-slate-600 italic">—</span>}
+                  </td>
                   <td className="py-2.5 pr-3 text-slate-500 max-w-40 truncate">
                     {u.scope?.tags?.length ? u.scope.tags.join(", ") : "Division-wide"}
                   </td>

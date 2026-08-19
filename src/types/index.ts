@@ -407,6 +407,8 @@ export interface SystemUser {
   role: OfficialRole;
   department: string;
   designation: string;
+  /** Current posting / location of this official. */
+  current_location: string;
   active: boolean;
   /** Demo accounts are the 12 seeded officials — they see the sample workspace. */
   demo?: boolean;
@@ -424,6 +426,7 @@ export interface PublicUser {
   role: OfficialRole;
   department: string;
   designation: string;
+  current_location: string;
   active: boolean;
   demo?: boolean;
   scope: { tags: string[] };

@@ -49,7 +49,7 @@ export const AppShell: React.FC<AppShellProps> = ({
         username,
         password: "demo123",
       });
-      sessionStorage.setItem("railoptima_token", res.token);
+      sessionStorage.setItem("railsync_token", res.token);
       onSwitchUser(res.user);
       onNavigate("overview");
     } catch (e) {
@@ -65,7 +65,7 @@ export const AppShell: React.FC<AppShellProps> = ({
     } catch {
       /* ignore */
     }
-    sessionStorage.removeItem("railoptima_token");
+    sessionStorage.removeItem("railsync_token");
     onLogout();
   };
 
@@ -79,7 +79,7 @@ export const AppShell: React.FC<AppShellProps> = ({
           </div>
         </div>
         <div>
-          <div className="text-sm font-extrabold leading-none">RailOptima</div>
+          <div className="text-sm font-extrabold leading-none">RailSync AI</div>
           <div className="text-[10px] text-slate-500 mt-0.5">Delhi Division · NR</div>
         </div>
       </div>
@@ -119,6 +119,12 @@ export const AppShell: React.FC<AppShellProps> = ({
             <div className="min-w-0">
               <div className="text-xs font-bold text-slate-100 truncate">{user.name}</div>
               <div className="text-[10px] text-slate-500 truncate">{meta.label}</div>
+              {user.current_location && (
+                <div className="text-[9px] text-slate-600 truncate flex items-center gap-1 mt-0.5">
+                  <span className="text-cyan-500">●</span>
+                  {user.current_location}
+                </div>
+              )}
             </div>
             <button onClick={doLogout} title="Sign out" className="ml-auto text-slate-500 hover:text-rose-400 transition">
               <LogOut className="w-4 h-4" />
@@ -213,7 +219,7 @@ export const AppShell: React.FC<AppShellProps> = ({
         <main className="flex-1 max-w-6xl w-full mx-auto p-4 sm:p-6 space-y-5">{children}</main>
 
         <footer className="px-6 py-4 text-[10px] text-slate-600 border-t border-slate-800/60 flex flex-wrap items-center justify-between gap-2">
-          <span>RailOptima · AI Railway Maintenance Scheduling Engine · Indian Railways Delhi Division</span>
+          <span>RailSync AI · AI Railway Maintenance Scheduling Engine · Indian Railways Delhi Division</span>
           <span className="font-mono">Role-scoped access · Full audit trail · v4.0</span>
         </footer>
       </div>
